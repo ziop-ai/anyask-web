@@ -858,6 +858,7 @@ const Home: React.FC<HomeProps> = ({
     </>
   );
 };
+
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {

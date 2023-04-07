@@ -331,4 +331,5 @@ export const Chat: FC<Props> = memo(
     );
   },
 );
+
 Chat.displayName = 'Chat';
