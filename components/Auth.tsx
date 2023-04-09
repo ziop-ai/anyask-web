@@ -1,11 +1,19 @@
-import { useSession, signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { ReactNode } from 'react';
 
-export default function Auth({ children }: { children: ReactNode }) {
-  const { status, data: session, update } = useSession();
-  if (status === 'authenticated') {
-    return <>{children}</>;
+
+function Auth({ children }: { children: ReactNode }) {
+  const { data: session } = useSession();
+  if (session) {
+    return <>{ children }</>;
+  } else {
+    return (
+      <>
+        <p  style={ { color: "white" } }>Check Slack - General for the invitation code</p>
+        <button onClick={ () => signIn() } style={ { color: "white",  background:"gold" } }>Sign in</button>
+      </>
+    )
   }
-  signIn();
-  return <>Sign In... </>;
 }
+
+export default Auth;

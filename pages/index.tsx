@@ -37,6 +37,7 @@ import Head from 'next/head';
 import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { v4 as uuidv4 } from 'uuid';
+import Auth from "@/components/Auth";
 
 interface HomeProps {
   serverSideApiKeyIsSet: boolean;
@@ -733,7 +734,7 @@ const Home: React.FC<HomeProps> = ({
   }, [serverSideApiKeyIsSet]);
 
   return (
-    <>
+    <Auth>
       <Head>
         <title>Chatbot UI</title>
         <meta name="description" content="ChatGPT but better." />
@@ -855,7 +856,7 @@ const Home: React.FC<HomeProps> = ({
           </div>
         </main>
       )}
-    </>
+    </Auth>
   );
 };
 
