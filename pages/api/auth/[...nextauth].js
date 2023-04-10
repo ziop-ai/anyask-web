@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from "next-auth/providers/credentials"
-
+import GithubProvider from "next-auth/providers/github"
+import GoogleProvider from "next-auth/providers/google"
 export default async function auth(req, res) {
   return await NextAuth(req, res, authOptions)
 }
@@ -8,15 +9,15 @@ export default async function auth(req, res) {
 const authOptions = {
   secret: process.env.SECRET,
   providers: [
-    // GithubProvider({
-    //     clientId: process.env.GITHUB_ID,
-    //     clientSecret: process.env.GITHUB_SECRET,
-    // }),
-    // GoogleProvider({
-    //     clientId: process.env.GOOGLE_CLIENT_ID,
-    //     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    //     allowDangerousEmailAccountLinking: true,
-    // }),
+    GithubProvider({
+        clientId: process.env.GITHUB_ID,
+        clientSecret: process.env.GITHUB_SECRET,
+    }),
+    GoogleProvider({
+        clientId: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        allowDangerousEmailAccountLinking: true,
+    }),
     // EmailProvider({
     //     server: process.env.EMAIL_SERVER,
     //     from: process.env.EMAIL_FROM,
